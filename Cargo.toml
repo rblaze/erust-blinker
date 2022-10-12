@@ -1,0 +1,22 @@
+[package]
+authors = ["Andrey Sverdlichenko <blaze@rusty.zone>"]
+edition = "2018"
+name = "erust-blinker"
+version = "0.1.0"
+
+[dependencies]
+cortex-m-rt = "0.7.1"
+panic-halt = "0.2.0"
+stm32l0xx-hal = { version = "0.10.0", features = ["mcu-STM32L073RZTx", "rt"] }
+
+# this lets you use `cargo fix`
+[[bin]]
+name = "erust-blinker"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
+opt-level = "s"
