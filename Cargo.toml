@@ -1,6 +1,6 @@
 [package]
 authors = ["Andrey Sverdlichenko <blaze@rusty.zone>"]
-edition = "2018"
+edition = "2021"
 name = "erust-blinker"
 version = "0.1.0"
 
