@@ -2,7 +2,8 @@
 #![no_std]
 #![no_main]
 
-use panic_halt as _; // you can put a breakpoint on `rust_begin_unwind` to catch panics
+// use panic_probe as _;
+use panic_halt as _;
 
 use cortex_m_rt::entry;
 use stm32l0xx_hal::pac;
@@ -28,7 +29,7 @@ fn main() -> ! {
     let button = gpioc.pc13.into_floating_input();
 
     loop {
-        let state = match button.is_high() {
+        let state = match button.is_low() {
             Ok(true) => PinState::High,
             Ok(false) => PinState::Low,
             _ => unreachable!(),
